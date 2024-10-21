@@ -864,7 +864,10 @@ class _GlancesCurses:
         # Add the message
         for y, m in enumerate(sentence_list):
             if len(m) > 0:
-                popup.addnstr(2 + y, 2, m, len(m))
+                try:
+                    popup.addnstr(2 + y, 2, m, len(m))
+                except:
+                    pass
 
         if popup_type == 'info':
             # Display the popup
@@ -880,7 +883,10 @@ class _GlancesCurses:
             sub_pop.attron(self.colors_list['FILTER'])
             # Init the field with the current value
             if input_value is not None:
-                sub_pop.addnstr(0, 0, input_value, len(input_value))
+                try:
+                    sub_pop.addnstr(0, 0, input_value, len(input_value))
+                except:
+                    pass
             # Display the popup
             popup.refresh()
             sub_pop.refresh()
@@ -907,7 +913,10 @@ class _GlancesCurses:
             sub_pop = popup.derwin(1, 2, len(sentence_list) + 1, len(m) + 2)
             sub_pop.attron(self.colors_list['FILTER'])
             # Init the field with the current value
-            sub_pop.addnstr(0, 0, '', 0)
+            try:
+                sub_pop.addnstr(0, 0, '', 0)
+            except:
+                pass
             # Display the popup
             popup.refresh()
             sub_pop.refresh()
@@ -957,14 +966,17 @@ class _GlancesCurses:
 
     def display_stats_with_current_size(self, m, y, x):
         screen_x = self.term_window.getmaxyx()[1]
-        self.term_window.addnstr(
-            y,
-            x,
-            m['msg'],
-            # Do not display outside the screen
-            screen_x - x,
-            self.colors_list[m['decoration']],
-        )
+        try:
+            self.term_window.addnstr(
+                y,
+                x,
+                m['msg'],
+                # Do not display outside the screen
+                screen_x - x,
+                self.colors_list[m['decoration']],
+            )
+        except:
+            pass
 
     def display_stats(self, plugin_stats, init, helper):
         y, x, x_max = init
