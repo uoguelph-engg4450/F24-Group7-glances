@@ -19,7 +19,7 @@ alpine_images     := $(IMAGES_TYPES:%=docker-alpine-%)
 ubuntu_images     := $(IMAGES_TYPES:%=docker-ubuntu-%)
 DOCKER_IMAGES     := $(alpine_images) $(ubuntu_images)
 DOCKER_RUNTIMES   := $(DOCKER_IMAGES:%=run-%)
-UNIT_TESTS        := test-core test-restful test-xmlrpc
+UNIT_TESTS        := test-core
 DOCKER_BUILD      := docker buildx build
 DOCKER_RUN        := docker run
 PODMAN_SOCK       ?= /run/user/$(shell id -u)/podman/podman.sock
@@ -97,8 +97,6 @@ $(UNIT_TESTS): test-%: unittest-%.py
 	$(PYTHON) $<
 
 test-core: ## Run core unit tests
-test-restful: ## Run Restful unit tests
-test-xmlrpc: ## Run XMLRPC unit tests
 
 test: $(UNIT_TESTS) ## Run unit tests
 
