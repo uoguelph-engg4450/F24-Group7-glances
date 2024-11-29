@@ -777,17 +777,17 @@ class TestGlances(unittest.TestCase):
 
     def test_201_process_white_box(self):
         """Check Process plugin with Whitebox testing"""
-        # # stats_to_check = [ ]
+        # stats_to_check = [ ]
         print('INFO: [TEST_201] Check Process plugin with Whitebox testing')
-        # stats_grab = stats.get_plugin('processcount').get_raw()
-        # # total = stats_grab['total']
-        # self.assertTrue(isinstance(stats_grab, dict), msg='Process count stats is not a dict')
-        # print(f'INFO: PROCESS count stats: {stats_grab}')
-        # stats_grab = stats.get_plugin('processlist').get_raw()
-        # self.assertTrue(isinstance(stats_grab, list), msg='Process count stats is not a list')
-        # print(f'INFO: PROCESS list stats: {len(stats_grab)} items in the list')
-        # # Check if number of processes in the list equal counter
-        # # self.assertEqual(total, len(stats_grab))
+        stats_grab = stats.get_plugin('processcount').get_raw()
+        # total = stats_grab['total']
+        self.assertTrue(isinstance(stats_grab, dict), msg='Process count stats is not a dict')
+        print(f'INFO: PROCESS count stats: {stats_grab}')
+        stats_grab = stats.get_plugin('processlist').get_raw()
+        self.assertTrue(isinstance(stats_grab, list), msg='Process count stats is not a list')
+        print(f'INFO: PROCESS list stats: {len(stats_grab)} items in the list')
+        # Check if number of processes in the list equal counter
+        # self.assertEqual(total, len(stats_grab))
         self.assertTrue(True, True)
 
     # def test_700_secure(self):
